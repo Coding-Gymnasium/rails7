@@ -2,15 +2,26 @@
 
 class TasksController < ApplicationController
   def index
-    @page = params[:page].to_i
-    @tasks = Task.all
+    @tasks = Task.order(:position)
   end
 
-  def show; end
+  def show
+    @task = Task.find(params[:id])
+  end
 
-  def new; end
+  def new
+    @count = Task.count
+    @task = Task.new(position: @count + 1) # outputs a default value that populates the form
+  end
 
-  def create; end
+  def create
+    @task = Task.new(task_params)
+    if @task.save
+      redirect_to tasks_path
+    else
+      render('new')
+    end
+  end
 
   def edit; end
 
@@ -19,4 +30,10 @@ class TasksController < ApplicationController
   def delete; end
 
   def destroy; end
+
+  private
+
+  def task_params
+    params.require(:task).permit(:name, :position, :description, :completed)
+  end
 end
