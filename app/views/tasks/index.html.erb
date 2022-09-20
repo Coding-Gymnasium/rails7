@@ -8,6 +8,8 @@
 
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= task %></li>
+    <li><%= task.name %></li>
   <% end %>
 </ul>
+
+<%= link_to('First Task', task_path(1)) %>
