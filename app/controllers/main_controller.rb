@@ -2,11 +2,11 @@
 
 class MainController < ApplicationController
   def index
-    # render('index')
+    @tasks = ['Fold laundry', 'Sweep porch', 'Wash dishes', 'Mow lawn']
   end
 
   def about
-    # render('about')
+    @created_by = 'Nico Rithner'
   end
 
   def hello
