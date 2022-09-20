@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class MainController < ApplicationController
   def index
     # render('index')
@@ -6,5 +7,9 @@ class MainController < ApplicationController
 
   def about
     # render('about')
+  end
+
+  def hello
+    redirect_to(action: 'index')
   end
 end
