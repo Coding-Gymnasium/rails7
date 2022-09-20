@@ -1,4 +1,9 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
+
+  root "main#index"
+
   get 'main/index'
   get 'tasks/index'
   get 'tasks/new'
